@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 const Attribute = (props) => {
-  const { attributeName } = props;
-  const [value, setValue] = useState(10);
+  const { attributeName, value, onUpdateValue } = props;
 
   const abilityModifier = Math.floor((value - 10)/2)
 
-  const incrementHandler = () => setValue(value + 1);
+  const incrementHandler = () => onUpdateValue(value + 1);
 
-  const decrementHandler = () => setValue(value - 1);
+  const decrementHandler = () => onUpdateValue(value - 1);
 
   return (
     <div>
