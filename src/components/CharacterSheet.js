@@ -13,8 +13,10 @@ const CharacterSheet = () => {
   return (
     <>
       {Object.keys(CLASS_LIST).map((characterClass) => {
+
         return (
           <button
+          // className={meetsRequirements? 'enabledClass': ''}
             key={characterClass}
             onClick={() => displayClassDetailsHandler(characterClass)}
           >
