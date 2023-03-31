@@ -1,26 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from "../data/consts";
 import Attribute from "./Attribute";
 import ClassDetails from "./ClassDetails";
 import Skill from "./Skill";
 
 const CharacterSheet = () => {
-  const [selectedClass, setSelectedClass] = useState(null);
-
   const [attributes, setAttributes] = useState(
     Object.fromEntries(ATTRIBUTE_LIST.map((attribute) => [attribute, 10]))
   );
 
+  const [selectedClass, setSelectedClass] = useState(null);
 
   // intelligence attribute ability modifier
   const intModifier = Math.floor((attributes.Intelligence - 10) / 2);
 
   // state to keep track of the skill points
-  const [skillPoints, setSkillPoints] = useState(
-    10 + 4 * intModifier
-  );
+  const [skillPoints, setSkillPoints] = useState(10 + 4 * intModifier);
 
-  // handler function to update attribues state  
+  // update when intelligence attribute is changed
+  useEffect(()=>{
+    setSkillPoints(10 + 4 * intModifier)
+  },[intModifier, attributes.Intelligence])
+
+  // handler function to update attribues state
   const updateAttributeValueHandler = (attribute, value) => {
     setAttributes((prevAttributes) => ({
       ...prevAttributes,
@@ -72,11 +74,15 @@ const CharacterSheet = () => {
           />
         );
       })}
-
+      <br></br>
       <div>
+        <div>Available Skill Points:{skillPoints} </div>
+        <br></br>
         {Object.keys(SKILL_LIST).map((skillName) => {
           // calculate the ability modifier of all attributes
-          const abilityModifier = Math.floor((attributes[SKILL_LIST[skillName].attributeModifier] - 10)/2);
+          const abilityModifier = Math.floor(
+            (attributes[SKILL_LIST[skillName].attributeModifier] - 10) / 2
+          );
           const skillPointsSpent = 0;
 
           return (

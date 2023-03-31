@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import './App.css';
 import CharacterSheet from './components/CharacterSheet'
-// import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from './consts.js';
 
 
 function App() {

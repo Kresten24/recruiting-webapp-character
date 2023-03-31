@@ -28,10 +28,10 @@ const Skill = ({
     <div>
       {skillName} - points: {points}
       <button onClick={incrementSkillPoints} disabled={disabled}>
-        [+]
+        +
       </button>
       <button onClick={decrementSkillPoints} disabled={disabled}>
-        [-]
+        -
       </button>
       modifier: {abilityModifier} total: {total}
     </div>

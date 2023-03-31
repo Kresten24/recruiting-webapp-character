@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Attribute = (props) => {
   const { attributeName, value, onUpdateValue } = props;
 
@@ -14,7 +12,6 @@ const Attribute = (props) => {
       <button onClick={incrementHandler}>+</button>
         Value: {value} 
         <button onClick={decrementHandler}>-</button>
-
       </div>
     </div>
   );
